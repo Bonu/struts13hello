@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: struts13hello Maven Webapp
+Implementation-Version: 1.0-SNAPSHOT
+Built-By: janardhanbonu
+Implementation-Vendor-Id: com.jbonu
+Created-By: IntelliJ IDEA
+Build-Jdk: 1.8
+Main-Class: ${start-class}
+

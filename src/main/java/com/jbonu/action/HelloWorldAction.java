@@ -10,13 +10,17 @@ import org.apache.struts.action.ActionMapping;
 
 import com.jbonu.form.HelloWorldForm;
 
-public class HelloWorldAction extends Action{
-	
-	public ActionForward execute(ActionMapping mapping,ActionForm form,
-			HttpServletRequest request,HttpServletResponse response) throws Exception {
+public class HelloWorldAction extends Action {
+
+	public HelloWorldAction() {
+		System.out.println("---Hello world action---");
+	}
+
+	public ActionForward execute(ActionMapping mapping, ActionForm form,
+								 HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		HelloWorldForm helloWorldForm = (HelloWorldForm) form;
-		helloWorldForm.setMessage("Hello World! Struts");
+		helloWorldForm.setMessage("Hello World! StrutsActionServlet");
 		
 		return mapping.findForward("success");
 	}

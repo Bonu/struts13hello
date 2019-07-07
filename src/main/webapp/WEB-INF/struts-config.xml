@@ -6,17 +6,21 @@
 <struts-config>
 
 	<form-beans>
-		<form-bean name="helloWorldForm" 
-			type="com.jbonu.form.HelloWorldForm"/>
+		<form-bean name="helloWorldForm" type="com.jbonu.form.HelloWorldForm"/>
 	</form-beans>
 
 	<action-mappings>
-		<action path="/helloWorld"
-			type="com.jbonu.action.HelloWorldAction"
-			name="helloWorldForm">
-			<forward name="success" path="/HelloWorld.jsp"/>
-			
+		<action path="/helloWorld" type="com.jbonu.action.HelloWorldAction" name="helloWorldForm">
+			<forward name="success" path="/jsps/HelloWorld.jsp"/>
 		</action>
 	</action-mappings>
+
+	<controller>
+		<set-property property="processorClass" value="no.hackeriet.struts1Spring.struts.DelegatingRequestProcessor"/>
+	</controller>
+
+	<plug-in className="no.hackeriet.struts1Spring.struts.ContextLoaderPlugIn">
+		<set-property property="contextConfigLocation" value="/WEB-INF/action-servlet.xml"/>
+	</plug-in>
 
 </struts-config>
