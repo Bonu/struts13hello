@@ -1,5 +1,6 @@
 package com.jbonu.action;
 
+import com.jbonu.form.UserForm;
 import com.jbonu.model.User;
 import com.jbonu.service.ServiceFacade;
 import no.hackeriet.struts1Spring.struts.ActionSupport;
@@ -13,18 +14,25 @@ import java.util.List;
 public class UserAction extends ActionSupport {
 
     private static final long serialVersionUID = 1L;
-    private List<User> users;
+    private List<UserForm> users;
 
     @Autowired
     private ServiceFacade userService;
 
+    public UserAction() {
+        System.out.println("---User Action---");
+    }
+
     @SuppressWarnings("unchecked")
     public String execute() throws Exception {
-        users = (List<User>) userService.doService("get");
+        List<User> lusers = (List<User>) userService.doService("get");
+        for (User luser:lusers) {
+            users.add(new UserForm(luser.getId(), luser.getFirstName(), luser.getLastName(), luser.getAge(),luser.getGender()));
+        }
         return "SUCCESS";
     }
 
-    public List<User> getUsers(){
+    public List<UserForm> getUsers(){
         return users;
     }
 }

@@ -7,11 +7,15 @@
 
 	<form-beans>
 		<form-bean name="helloWorldForm" type="com.jbonu.form.HelloWorldForm"/>
+		<form-bean name="userForm" type="com.jbonu.form.UserForm"/>
 	</form-beans>
 
 	<action-mappings>
 		<action path="/helloWorld" type="com.jbonu.action.HelloWorldAction" name="helloWorldForm">
 			<forward name="success" path="/jsps/HelloWorld.jsp"/>
+		</action>
+		<action path="/users" type="com.jbonu.action.UserAction" name="userForm">
+			<forward name="success" path="/jsps/Users.jsp"/>
 		</action>
 	</action-mappings>
 

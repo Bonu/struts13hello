@@ -1,4 +1,9 @@
-<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,15 +47,15 @@
         <th>Age</th>
         <th>Gender</th>
     </tr>
-    <s:iterator value="users">
-        <tr class="<s:if test="id%2==0">even</s:if><s:else>odd</s:else>">
-            <td align="center"><s:property value="id"/></td>
-            <td><s:property value="firstName"/></td>
-            <td><s:property value="lastName"/></td>
-            <td align="center"><s:property value="age"/></td>
-            <td><s:if test="gender == 'M'">Male</s:if><s:else>Female</s:else></td>
+    <c:forEach items="${users}" var="user">
+        <tr class="<c:if test="${user.id}%2==0">even</c:if><c:if test="${user.id}%2!=0">odd</c:if>">
+            <td align="center"><c:out value="id"/></td>
+            <td><c:out value="${user.firstName}"/></td>
+            <td><c:out value="${user.lastName}"/></td>
+            <td align="center"><c:out value="age"/></td>
+            <td><c:if test="${user.gender} == 'M'">Male</c:if><c:if test="${user.gender} == 'F'">Female</c:if></td>
         </tr>
-    </s:iterator>
+    </c:forEach>
 </table>
 </body>
 </html>
